@@ -1,0 +1,41 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Web\\Tarea_Web5\\Tar_5\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\Tar_5.bundle.scp.css",
+      "PackagePath": "staticwebassets\\Tar_5.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Web\\Tarea_Web5\\Tar_5\\wwwroot\\app.css",
+      "PackagePath": "staticwebassets\\app.css"
+    },
+    {
+      "Id": "C:\\Web\\Tarea_Web5\\Tar_5\\wwwroot\\bootstrap\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Web\\Tarea_Web5\\Tar_5\\wwwroot\\bootstrap\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\bootstrap\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Web\\Tarea_Web5\\Tar_5\\wwwroot\\favicon.png",
+      "PackagePath": "staticwebassets\\favicon.png"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.Tar_5.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.Tar_5.props",
+      "PackagePath": "build\\Tar_5.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.Tar_5.props",
+      "PackagePath": "buildMultiTargeting\\Tar_5.props"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.Tar_5.props",
+      "PackagePath": "buildTransitive\\Tar_5.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

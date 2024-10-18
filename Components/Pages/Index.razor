@@ -1,0 +1,55 @@
+@page "/"
+@using Microsoft.EntityFrameworkCore
+@using System.Linq
+@using Tar_5.Data
+@using Tar_5.Models
+@inject AppDbContext DbContext
+
+
+<PageTitle>Inicio - Aplicación de Videojuegos</PageTitle>
+
+<h1>Bienvenido a la Aplicación de Videojuegos</h1>
+
+<div class="row mt-4">
+    <div class="col-md-4">
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <h5 class="card-title">Videojuegos Registrados</h5>
+                <p class="card-text">Total: @videojuegosCount</p>
+                <a href="/registro-videojuego" class="btn btn-primary">Registrar Nuevo</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <h5 class="card-title">Plataformas</h5>
+                <p class="card-text">Total: @plataformasCount</p>
+                <a href="/gestion-plataformas" class="btn btn-primary">Gestionar</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card bg-dark text-white">
+            <div class="card-body">
+                <h5 class="card-title">Personajes Registrados</h5>
+                <p class="card-text">Total: @personajesCount</p>
+                <a href="/registro-personaje" class="btn btn-primary">Registrar Nuevo</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+@code {
+    private int videojuegosCount;
+    private int plataformasCount;
+    private int personajesCount;
+
+    protected override async Task OnInitializedAsync()
+    {
+        videojuegosCount = await DbContext.Videojuegos.CountAsync();
+        plataformasCount = await DbContext.Plataformas.CountAsync();
+        personajesCount = await DbContext.Personajes.CountAsync();
+        StateHasChanged();
+    }
+}

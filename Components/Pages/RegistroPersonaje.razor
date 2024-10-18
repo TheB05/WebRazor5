@@ -1,0 +1,79 @@
+@page "/registro-personaje"
+@using Tar_5.Data
+@using Tar_5.Models
+@using Microsoft.EntityFrameworkCore
+@using System.Linq
+@inject AppDbContext DbContext
+@inject NavigationManager NavigationManager
+
+<h3>Registro de Personaje</h3>
+
+<EditForm Model="@personaje" OnValidSubmit="GuardarPersonaje">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <InputText id="nombre" @bind-Value="personaje.Nombre" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="alias">Alias:</label>
+        <InputText id="alias" @bind-Value="personaje.Alias" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="rolEnJuego">Rol en el juego:</label>
+        <InputText id="rolEnJuego" @bind-Value="personaje.RolEnJuego" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="habilidadEspecial">Habilidad especial:</label>
+        <InputText id="habilidadEspecial" @bind-Value="personaje.HabilidadEspecial" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="armaFavorita">Arma favorita:</label>
+        <InputText id="armaFavorita" @bind-Value="personaje.ArmaFavorita" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="nivelPoder">Nivel de poder:</label>
+        <InputNumber id="nivelPoder" @bind-Value="personaje.NivelPoder" class="form-control" min="1" max="100" />
+    </div>
+
+    <div class="form-group">
+        <label for="imagenPersonaje">Imagen del personaje (URL):</label>
+        <InputText id="imagenPersonaje" @bind-Value="personaje.ImagenPersonaje" class="form-control" />
+    </div>
+
+    <div class="form-group">
+        <label for="videojuego">Videojuego:</label>
+        <InputSelect id="videojuego" @bind-Value="personaje.VideojuegoId" class="form-control">
+            @foreach (var videojuego in videojuegos)
+            {
+                <option value="@videojuego.Id">@videojuego.Nombre</option>
+            }
+        </InputSelect>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Guardar</button>
+</EditForm>
+
+@code {
+    private Personaje personaje = new Personaje();
+    private List<Videojuego> videojuegos = new List<Videojuego>();
+
+    protected override async Task OnInitializedAsync()
+    {
+        videojuegos = await DbContext.Videojuegos.ToListAsync();
+        StateHasChanged();
+    }
+
+    private async Task GuardarPersonaje()
+    {
+        DbContext.Personajes.Add(personaje);
+        await DbContext.SaveChangesAsync();
+        NavigationManager.NavigateTo("/");
+    }
+}
